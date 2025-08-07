@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+ html {
+    font-family: 'Manrope', Helvetica, Arial, sans-serif;
+  }
+
+.gradient-text {
+  background: linear-gradient(90deg, #e5e9f2 0%, #c7d0e8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}  
+
+
