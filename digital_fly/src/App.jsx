@@ -156,7 +156,7 @@ function App() {
 
       <Footer />  
 
-<Home/>
+{/* <Home/> */}
     </>
   );
 }
