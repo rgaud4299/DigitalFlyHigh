@@ -77,7 +77,7 @@ const controls = useAnimation();
         <div className="mb-3 text-sm text-sky-400 font-medium tracking-wide">
           [ <span className="text-white font-medium">Everything You Need to Know</span> ]
         </div>
-        <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+        <div className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
           Frequently Asked
           <span className="block text-gray-300 -mt-2">Questions</span>
         </div>

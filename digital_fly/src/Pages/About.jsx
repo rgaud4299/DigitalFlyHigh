@@ -104,7 +104,7 @@ const About = () => {
             [ <span className="text-white font-medium">About Us</span> ]
           </p>
 
-          <h2 className="text-4xl sm:text-4xl md:text-5xl font-bold leading-tight">
+          <h2 className="text-4xl sm:text-4xl md:text-5xl font-semibold leading-tight">
             We're more than just an agency; we are your dedicated digital growth partner.
           </h2>
 
@@ -131,7 +131,7 @@ const About = () => {
 
         {/* Right Side Image */}
         <Motion.div
-          className="w-56 h-56 sm:w-72 sm:h-72 md:w-[28rem] md:h-[28rem]"
+          className="w-80 h-80 sm:w-80 sm:h-80 md:w-[28rem] md:h-[28rem]"
           initial="hidden"
           animate={controls}
           variants={imageVariants}

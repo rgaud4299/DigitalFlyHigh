@@ -55,7 +55,7 @@ const HeroSection = ({ videoSrc, subtitle, description }) => {
         Your browser does not support the video tag.
       </video>
 
-      <div className="absolute inset-0 bg-herovideo bg-opacity-50 flex items-center justify-center text-center px-4">
+      <div className="absolute inset-0 bg-herovideo bg-opacity-50 flex py-24 justify-center text-center px-4">
         <div className="max-w-7xl w-full text-white">
           <p className="text-sm sm:text-sm text-sky-400 font-medium py-2 sm:py-4">
             [ <span className="text-white font-medium">{subtitle}</span> ]
@@ -66,7 +66,7 @@ const HeroSection = ({ videoSrc, subtitle, description }) => {
             Better. Brighter.
           </h1>
 
-          <p className="text-xl sm:text-base md:text-lg leading-snug font-light text-gray-300 max-w-3xl mx-auto px-2 sm:px-6">
+          <p className="text-xl sm:text-base md:text-lg leading-snug font-light text-gray-300 max-w-3xl md:max-w-7xl mx-auto px-2 sm:px-6">
             {description}
           </p>
         </div>

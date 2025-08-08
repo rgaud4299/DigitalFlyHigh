@@ -16,7 +16,7 @@ export default function ProjectBasedSolutions() {
   return (
     <div className="w-full bg-page-bg pt-5 px-6 flex flex-col items-center">
       <div className="max-w-4xl text-center mb-0">
-        <h4 className="text-4xl font-bold text-slate-100 leading-tight drop-shadow-md my-0">
+        <h4 className="text-4xl font-semibold text-slate-100 leading-tight drop-shadow-md my-0">
           Project-Based Solutions
         </h4>
       </div>

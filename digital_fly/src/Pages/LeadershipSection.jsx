@@ -39,7 +39,7 @@ export default function LeadershipSection({
           className="text-center mb-12">
           
 
-          <h1 className="font-bold text-[1.5rem] md:text-[3rem] leading-none">
+          <h1 className="font-semibold text-[1.5rem] md:text-[3rem] leading-none">
             <span className="block">{headingMain}</span>
             <span className="block gradient-text">{headingAccent}</span>
           </h1>

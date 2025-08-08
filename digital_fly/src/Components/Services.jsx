@@ -18,12 +18,12 @@ const Services = () => {
   return (
     <div
       ref={containerRef}
-      className="my-32 flex flex-wrap justify-center gap-6 px-4"
+      className="my-16 sm:my-20 md:my-20 flex flex-wrap justify-center gap-6 px-2 md:px-4 "
     >
       {stats.map((item, index) => (
         <Motion.div
           key={index}
-          className={`w-64 p-6 ${item.color} text-white rounded-lg shadow-md`}
+          className={`w-80 md:w-64 p-7  ${item.color} text-white rounded-lg shadow-md`}
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: index * 0.3 }}
@@ -37,4 +37,6 @@ const Services = () => {
 };
 
 export default Services;
+
+
 

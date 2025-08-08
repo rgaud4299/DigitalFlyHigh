@@ -25,7 +25,7 @@ const OurServicesSection = () => {
           variants={textVariants}>
               <p className="text-sm text-sky-400 font-bold py-8 px-2">[ <span  className="text-sm text-white font-medium">What We Do</span> ]</p>
 
-        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-slate-100 leading-tight drop-shadow-md">
+        <h1 className="text-4xl sm:text-4xl md:text-5xl font-semibold text-slate-100 leading-tight drop-shadow-md">
           Explore Our Core Services
         </h1>
         <p className="text-xl sm:text-base md:text-lg leading-snug font-light text-gray-300 max-w-3xl mx-auto py-4 md:py-6">

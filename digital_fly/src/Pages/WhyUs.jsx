@@ -258,7 +258,7 @@ const WhyUs = () => {
         </Motion.p>
 
         <Motion.h1
-          className="text-4xl sm:text-4xl md:text-5xl font-bold text-slate-100 leading-tight drop-shadow-md"
+          className="text-4xl sm:text-4xl md:text-5xl font-semibold text-slate-100 leading-tight drop-shadow-md"
           custom={0.2}
           variants={fadeUp}
         >

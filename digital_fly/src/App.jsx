@@ -1,6 +1,8 @@
 
 
 
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
@@ -16,6 +18,7 @@ import Navbar from "./Pages/Navbar";
 import About from "./Pages/About";
 import HeroSection from "./Pages/HeroSection";
 import { motion as Motion , useScroll } from "framer-motion";
+import { Toaster } from 'react-hot-toast';
 
 // import About2 from "./Components/About2";
 
@@ -96,8 +99,6 @@ import { motion as Motion , useScroll } from "framer-motion";
 
 
 
-import AppRouter from "./AppRouter";
-import Home from "./Components/Animations/Home";
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -122,6 +123,7 @@ function App() {
       />
 
       <Navbar navigate={navigate} />
+  
 
       <Routes>
         <Route
@@ -155,8 +157,8 @@ function App() {
       </Routes>
 
       <Footer />  
-
-<Home/>
+    {/* <Toaster /> */}
+   <ToastContainer position="top-right" autoClose={2000} />
     </>
   );
 }

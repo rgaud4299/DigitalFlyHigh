@@ -35,11 +35,11 @@ export default function PricingPlans() {
           ]
         </p>
 
-        <h1 className="text-5xl font-bold text-slate-100 leading-tight drop-shadow-md">
+        <h1 className="text-5xl font-semibold text-slate-100 leading-tight drop-shadow-md">
           Find the Perfect Fit for Your Business
         </h1>
 
-        <h5 className="text-xl font-bold text-slate-100 leading-tight drop-shadow-md mt-16">
+        <h5 className="text-xl font-semibold text-slate-100 leading-tight drop-shadow-md mt-16">
           Monthly Growth Plans
         </h5>
       </Motion.div>
