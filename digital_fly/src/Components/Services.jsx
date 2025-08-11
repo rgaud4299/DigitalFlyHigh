@@ -13,7 +13,7 @@ const stats = [
 
 const Services = () => {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
 
   return (
     <div
@@ -23,6 +23,13 @@ const Services = () => {
       {stats.map((item, index) => (
         <Motion.div
           key={index}
+           whileHover={{
+        scale: 1.03,
+        rotateX: 3,
+        rotateY: -3,
+        boxShadow: "0 15px 40px rgba(0, 255, 255, 0.2)",
+        transition: { duration: 0.4 },
+      }}
           className={`w-80 md:w-64 p-7  ${item.color} text-white rounded-lg shadow-md`}
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

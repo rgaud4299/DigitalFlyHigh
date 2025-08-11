@@ -14,7 +14,7 @@ const navItems = [
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate(); // added
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,14 +27,14 @@ const Navbar = () => {
 
   // Button click handler
   const handleQuoteClick = () => {
-    setIsMenuOpen(false); // close menu on mobile
+    setIsMenuOpen(false);
     navigate("/contact");
   };
 
   return (
     <nav
-      className={`w-full sticky top-0 z-50 transition-all duration-300 ${
-        isSticky ? "bg-page-bg shadow-md" : "bg-page-bg"
+      className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
+        isSticky ? " bg-page-bg shadow-md" :"" 
       }`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6">
@@ -67,7 +67,7 @@ const Navbar = () => {
         <div className="hidden md:block">
           <button
             onClick={handleQuoteClick}
-            className="bg-[#00A8CC] hover:bg-[#008FB0] active:scale-95 text-white px-4 py-2 rounded-md uppercase font-semibold text-sm transition-all duration-200"
+            className="bg-btn-color hover:bg-btn-color-hover active:scale-95 text-white px-4 py-2 rounded-md uppercase font-semibold text-sm transition-all duration-200"
           >
             Get a Quote
           </button>

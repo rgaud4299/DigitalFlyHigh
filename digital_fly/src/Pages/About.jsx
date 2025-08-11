@@ -57,60 +57,45 @@
 // export default About;
 
 
-
-
-
-
-
-import React, { useEffect } from "react";
-import { motion as Motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion as Motion } from "framer-motion";
 import Services from "../Components/Services";
+import { useFadeInOnView } from "../utils/Animations/useFadeInOnView";
+import { imageVariants,  slideInLeft2} from "../utils/Animations/animations";
 
 const About = () => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+const { ref, ...motionProps } = useFadeInOnView();  
+// const cardVariants = {
+//     hidden: { opacity: 0, y: 60 },
+//     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+//   };
+ const { ...motionImageProps } = useFadeInOnView(
+     imageVariants ,
+ );  
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 200 ,scale: 1.3 },
-    visible: { opacity: 1, y: 0, scale: 1,transition: { duration: 1 } },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 1.3 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 1 } },
-  };
 
   return (
     <section
       ref={ref}
-      className="bg-[#0E1129] min-h-screen flex flex-col items-center justify-center px-4 md:px-10 lg:px-20 py-16 pt-32"
+      className="bg-page-bg min-h-screen flex flex-col items-center justify-center px-4 md:px-10 lg:px-20 py-16 pt-32"
     >
       <div className="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
         {/* Left Side Text */}
         <Motion.div
           className="text-white max-w-2xl"
-          initial="hidden"
-          animate={controls}
-          variants={textVariants}
+         {...motionProps} 
         >
           <p className="text-xs sm:text-sm text-sky-400 font-bold mb-4 sm:mb-6">
             [ <span className="text-white font-medium">About Us</span> ]
           </p>
 
-          <h2 className="text-4xl sm:text-4xl md:text-5xl font-semibold leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
             We're more than just an agency; we are your dedicated digital growth partner.
           </h2>
 
-          <p className="text-xl sm:text-base md:text-lg leading-snug font-light text-gray-300 max-w-3xl mx-auto py-4 md:py-6">
+          <Motion.p variants={slideInLeft2(2)} className="text-xl sm:text-base md:text-lg leading-snug font-light text-gray-300 max-w-3xl mx-auto py-4 md:py-6">
             Our promise is to transform your online presence into a powerful asset that drives leads, enhances brand authority, and boosts your market leadership.
-          </p>
+          </Motion.p>
 
           <ul className="mt-6 space-y-3 sm:space-y-4 text-sm sm:text-base">
             {[
@@ -121,10 +106,10 @@ const About = () => {
               "Mobile App Development",
               "Custom Software Solutions",
             ].map((item, index) => (
-              <li key={index} className="flex items-center">
+              <Motion.li key={index} variants={slideInLeft2()} className="flex items-center">
                 <span className="text-green-400 mr-2">✔️</span>
                 {item}
-              </li>
+              </Motion.li>
             ))}
           </ul>
         </Motion.div>
@@ -133,8 +118,8 @@ const About = () => {
         <Motion.div
           className="w-80 h-80 sm:w-80 sm:h-80 md:w-[28rem] md:h-[28rem]"
           initial="hidden"
-          animate={controls}
-          variants={imageVariants}
+          {...motionImageProps} 
+          
         >
           <img
             src="https://digitalflyhigh.in/images/misc/c1.webp"

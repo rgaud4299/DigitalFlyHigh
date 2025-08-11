@@ -37,34 +37,20 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import React, { useEffect } from "react";
-import { motion as Motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Services from "../Components/Services";
+import { motion as Motion } from "framer-motion";
+import { useFadeInOnView } from "../utils/Animations/useFadeInOnView";
 
 
 const LeadershipSection = () => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 200 ,scale: 1.3 },
-    visible: { opacity: 1, y: 0, scale: 1,transition: { duration: 1 } },
-  };
+ const { ref, ...motionProps } = useFadeInOnView();  
+ 
   return (
     <section 
     ref={ref}
-     className="bg-[#0E1129] text-white py-20">
+     className="bg-page-bg text-white py-20">
       <Motion.div 
-       initial="hidden"
-          animate={controls}
-          variants={textVariants}
+       {...motionProps} 
+
            className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           {/* <span className="text-[#00B4D8] font-medium text-sm">[ Our Leadership ]</span> */}
@@ -101,11 +87,8 @@ const LeadershipSection = () => {
           {leadershipData.map((person, index) => (
             <SwiperSlide key={index}>
               <Motion.div
-                              
-                              initial="hidden"
-                              animate={controls}
-                              variants={textVariants} 
-                             className="flex flex-col md:flex-row items-center gap-10">
+               {...motionProps} 
+                className="flex flex-col md:flex-row items-center gap-10">
                 <div className="relative w-80 h-80 rounded-xl overflow-hidden flex-shrink-0">
                   <img
                     src={person.image}

@@ -135,6 +135,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { motion as Motion } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 import { postContactForm } from "../API/api";
+import { useFadeInOnView } from "../utils/Animations/useFadeInOnView";
+import { slideInLeft2 } from "../utils/Animations/animations";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -144,18 +146,15 @@ export default function ContactForm() {
     phone: "",
     website: "",
     social: "",
-    project: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+const { ref, ...motionText } = useFadeInOnView();  
 
 
 
-    const textVariants = {
-    hidden: { opacity: 0, y: 200 ,scale: 1.3 },
-    visible: { opacity: 1, y: 0, scale: 1,transition: { duration: 1 } },
-  };
 
 
 
@@ -185,10 +184,10 @@ export default function ContactForm() {
     newErrors.phone = "Phone number must be at least 10 digits";
   }
 
-  if (!formData.project.trim()) {
-    newErrors.project = "Please describe your project";
-  } else if (formData.project.trim().length < 20) {
-    newErrors.project = "Project description must be at least 20 characters";
+  if (!formData.message.trim()) {
+    newErrors.message = "Please describe your Project";
+  } else if (formData.message.trim().length < 20) {
+    newErrors.message = "Project description must be at least 20 characters";
   }
 
   return newErrors;
@@ -199,31 +198,6 @@ export default function ContactForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: "" }); 
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const validationErrors = validate();
-  //   if (Object.keys(validationErrors).length > 0) {
-  //     setErrors(validationErrors);
-  //     toast.error("Please fix the highlighted errors");
-  //     return;
-  //   }
-
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //     toast.success("Form submitted successfully!");
-  //     setFormData({
-  //       name: "",
-  //       businessName: "",
-  //       email: "",
-  //       phone: "",
-  //       website: "",
-  //       social: "",
-  //       project: "",
-  //     });
-  //   }, 1000);
-  // };
 
 
 
@@ -244,7 +218,7 @@ const handleSubmit = async (e) => {
 
   try {
     // 🔹 API Call
-    const res = await postContactForm("/contact", formData);
+    const res = await postContactForm("/quote", formData);
     console.log("Response:", res);
 
     toast.success("Form submitted successfully!");
@@ -257,11 +231,12 @@ const handleSubmit = async (e) => {
       phone: "",
       website: "",
       social: "",
-      project: "",
+      message: "",
     });
   } catch (err) {
     console.error("Error:", err.message || err);
     toast.error(err.message || "Something went wrong!");
+
   } finally {
     setLoading(false);
   }
@@ -279,15 +254,12 @@ const handleSubmit = async (e) => {
       <div className="absolute inset-0 opacity-50 z-0"></div>
 
       {/* Container */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 flex flex-col items-center justify-center text-white">
+      <div ref={ref} className="relative z-10 max-w-6xl mx-auto px-4 py-20 flex flex-col items-center justify-center text-white">
         
         {/* Heading Animation */}
         <Motion.div
           className="text-center mb-10 max-w-3xl"
-          variants={textVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+         {...motionText}
         >
           <p className="text-sky-400 font-medium text-sm">
             [ <span className="text-white"> Let's Connect </span> ]
@@ -295,18 +267,15 @@ const handleSubmit = async (e) => {
           <h2 className="text-3xl md:text-5xl font-semibold mt-1">
             Ready to Start Your Project?
           </h2>
-          <p className="mt-3 text-slate-300 text-sm md:text-base">
+          <Motion.p variants={slideInLeft2(1)} className="mt-3 text-slate-300 text-sm md:text-base">
             Tell us a little about your business and your goals. A member of our expert team will get back to you shortly to schedule your free, no-obligation consultation....
-          </p>
+          </Motion.p>
         </Motion.div>
 
         {/* Form Animation */}
         <Motion.div
           className="w-full max-w-3xl bg-gradient-to-b from-[#00143C] to-[#011a4d] p-8 md:p-12 rounded-lg shadow-xl"
-          variants={textVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          {...motionText}
         >
           <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
             {/* Name */}
@@ -390,17 +359,17 @@ const handleSubmit = async (e) => {
               />
             </div>
 
-            {/* Project */}
+            {/* message */}
             <div className="md:col-span-2">
               <textarea
-                name="project"
-                value={formData.project}
+                name="message"
+                value={formData.message}
                 onChange={handleChange}
                 placeholder="Tell us about your project..."
                 rows="2"
                 className="border border-slate-600 bg-[#1B2347] w-full px-3 py-2 rounded-md text-white"
               ></textarea>
-              {errors.project && <span className="text-red-500 text-sm">{errors.project}</span>}
+              {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
             </div>
 
             {/* Submit Button */}
@@ -419,4 +388,9 @@ const handleSubmit = async (e) => {
 
     </section>
   );
-}
+} 
+
+
+
+
+

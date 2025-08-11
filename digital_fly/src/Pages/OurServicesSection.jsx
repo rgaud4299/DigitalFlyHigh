@@ -1,40 +1,28 @@
 
-import React, { useEffect } from "react";
-import { motion as Motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion as Motion } from "framer-motion";
 import OurServicesCard from "../Components/OurServicesCard";
+import { useFadeInOnView } from "../utils/Animations/useFadeInOnView";
+import { slideInLeft2 } from "../utils/Animations/animations";
 
 const OurServicesSection = () => {
-    const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+const { ref, ...motionText } = useFadeInOnView();  
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 200 ,scale: 1.3 },
-    visible: { opacity: 1, y: 0, scale: 1,transition: { duration: 1 } },
-  };
   return (
-    <div ref={ref} className="w-full bg-page-bg py-20 px-6 flex flex-col items-center">
-      <Motion.div className="max-w-4xl text-center mb-16" initial="hidden"
-          animate={controls}
-          variants={textVariants}>
+    <div ref={ref} className="section-container">
+      <Motion.div className="max-w-4xl text-center mb-16" 
+      {...motionText} >
               <p className="text-sm text-sky-400 font-bold py-8 px-2">[ <span  className="text-sm text-white font-medium">What We Do</span> ]</p>
 
         <h1 className="text-4xl sm:text-4xl md:text-5xl font-semibold text-slate-100 leading-tight drop-shadow-md">
           Explore Our Core Services
         </h1>
-        <p className="text-xl sm:text-base md:text-lg leading-snug font-light text-gray-300 max-w-3xl mx-auto py-4 md:py-6">
+        <Motion.p variants={slideInLeft2(2)} className="text-xl sm:text-base md:text-lg leading-snug font-light text-gray-300 max-w-3xl mx-auto py-4 md:py-6">
           We believe sustainable growth is built on a foundation of trust.
           That's why our partnership is defined by absolute transparency and
           relentless innovation. Our single-minded focus is to transform your
           challenges into triumphs, ensuring your brand doesn't just compete—it
           leads.
-        </p>
+        </Motion.p>
       </Motion.div>
 
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -54,6 +42,7 @@ const OurServicesSection = () => {
               <path d="M4 21h16a2 2 0 0 0 2-2V7" />
             </svg>
           }
+          index='1'
         >
           We build stunning, high-performance websites tailored to your brand.
           Our creations are fast, secure, and fully responsive, ensuring a
@@ -76,6 +65,7 @@ const OurServicesSection = () => {
               <path d="M3 7h4v4H3V7zM17 3h4v4h-4V3zM3 17h4v4H3v-4z" />
             </svg>
           }
+          index='2'
         >
           Launch a powerful online store with our robust e-commerce platforms.
           We offer end-to-end solutions, from product management to secure
@@ -98,6 +88,7 @@ const OurServicesSection = () => {
               <path d="M12 8v4l3 3" />
             </svg>
           }
+          index='3'
         >
           Dominate search rankings and drive valuable organic traffic. Our
           advanced SEO strategies use in-depth keyword research, technical
@@ -121,6 +112,7 @@ const OurServicesSection = () => {
               <path d="M4 21h16a2 2 0 0 0 2-2V7" />
             </svg>
           }
+          index='4'
         >
           Get instant, targeted traffic through high-ROI paid ad campaigns. We
           effectively manage your budget across Google and social media to
@@ -143,6 +135,7 @@ const OurServicesSection = () => {
               <path d="M3 7h4v4H3V7zM17 3h4v4h-4V3zM3 17h4v4H3v-4z" />
             </svg>
           }
+          index='5'
         >
           Engage and convert your target audience with compelling, valuable
           content. We create blog posts and articles that establish your brand
@@ -165,6 +158,7 @@ const OurServicesSection = () => {
               <path d="M12 8v4l3 3" />
             </svg>
           }
+          index='6'
         >
           Build a vibrant, loyal community around your brand. We expertly manage
           your social media presence, creating engaging content and fostering

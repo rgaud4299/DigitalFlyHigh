@@ -1,7 +1,14 @@
-
 import React, { useRef } from "react";
-import { motion as Motion, useInView } from "framer-motion";
+import { motion as Motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
+
+import {
+  FaLaptopCode,
+  FaShoppingCart,
+  FaPaintBrush,
+  FaVideo,
+} from "react-icons/fa";
 
 const pricingPlans = [
   {
@@ -77,112 +84,35 @@ const pricingPlans = [
   },
 ];
 
-// export default function PricingSection() {
-//   const containerRef = useRef(null);
-//   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-
-//   return (
-//     <div className="bg-page-bg text-white px-4 py-16">
-//       <div
-//         // ref={containerRef}
-//         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
-//       >
-//         {pricingPlans.map((item, index) => (
-//           <Motion.div
-//             ref={containerRef}
-//             key={index}
-//             whileHover={{
-//               scale: 1.03,
-//               rotateX: 3,
-//               rotateY: -3,
-//               boxShadow: "0 15px 40px rgba(0, 255, 255, 0.2)",
-//               transition: { duration: 0.15 },
-//             }}
-//             initial={{ opacity: 0, y: 60 }}
-//             animate={isInView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ duration: 0.6, delay: index * 0.3 }}
-//             style={{
-//               minHeight: "360px",
-//               perspective: "1000px",
-//               transformStyle: "preserve-3d",
-//             }}
-//             className={`flex flex-col justify-between rounded-xl p-8 shadow-md ${
-//               item.highlighted
-//                 ? "bg-card-highlighted text-white"
-//                 : "bg-card-bg2 text-white"
-//             } relative`}
-//           >
-//             {item.badge && (
-//               <div className=" absolute top-2 left-1/2 transform -translate-x-1/2 px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-orange-400 text-black rounded-full">
-//                 {item.badge}
-//               </div>
-//             )}
-
-//             <div>
-//               <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
-//               <p className="text-sm mb-6">{item.description}</p>
-
-//               <div className="mb-6">
-//                 <p className="text-sm">Starts at</p>
-//                 <div className="text-3xl font-bold">
-//                   {item.price}
-//                   <span className="text-base font-medium">
-//                     {item.frequency}
-//                   </span>
-//                 </div>
-//               </div>
-
-//               <div className="border-t border-[rgba(255,255,255,0.2)] my-6" />
-
-//               <ul className="space-y-3 text-sm">
-//                 {item.features.map((feature, idx) => (
-//                   <li key={idx} className="flex items-start gap-2">
-//                     <FaCheckCircle className="text-teal-400 mt-[2px]" />
-//                     <span>{feature}</span>
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-
-//             <button
-//               onClick={() => alert(`${item.title} button clicked`)}
-//               className={`mt-8 w-full py-3 rounded-md font-semibold uppercase tracking-wider transition ${
-//                 item.highlighted
-//                   ? "bg-[rgba(255,255,255,0.15)] hover:bg-[rgba(255,255,255,0.25)]"
-//                   : "bg-[#0fa9e6] hover:bg-[#178de6]"
-//               }`}
-//             >
-//               {item.buttonText}
-//             </button>
-//           </Motion.div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-export default function PricingSection() {
+export default function PricingCard() {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
+
+  const parentVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.3 }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
 
   return (
     <div className="bg-page-bg text-white px-4 py-16">
-      <div
+      <Motion.div
         ref={containerRef}
+        variants={parentVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
       >
         {pricingPlans.map((item, index) => (
           <Motion.div
             key={index}
+            variants={cardVariants}
             whileHover={{
               scale: 1.03,
               rotateX: 3,
@@ -190,9 +120,6 @@ export default function PricingSection() {
               boxShadow: "0 15px 40px rgba(0, 255, 255, 0.2)",
               transition: { duration: 0.15 },
             }}
-            initial={{ opacity: 0, y: 60 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: index * 0.3 }}
             style={{
               willChange: "transform",
               perspective: "1000px",
@@ -249,7 +176,7 @@ export default function PricingSection() {
             </button>
           </Motion.div>
         ))}
-      </div>
+      </Motion.div>
     </div>
   );
 }

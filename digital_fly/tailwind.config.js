@@ -11,18 +11,24 @@ export default {
         manrope: ['Manrope', 'Helvetica', 'Arial', 'sans-serif']
       },
         animation: {
-        'spin-slow': 'spin 15s linear infinite',
+        'spin-slow': 'spin 8s linear infinite',
       },
         colors: {
-        'page-bg2': '#0f1f44',
-        'page-bg': '#0E1129',
+         'page-bg': '#0E1129',
+         'card-bg2':'#141a3a',
+         'herovideo':'#105183',
+         'btn-color': '#00A8CC',
+         'btn-color-hover': '#008FB0',
+         'card-hover': '#00b0d9',
+         //  'card-bg2':'red',
+       
+
+         
+         'page-bg2': '#0f1f44',
         'card-bg': '#1f2f66',
-        'card-bg2':'#141a3a',
         'text-primary': '#cfd8ee',
-        'accent': '#00b0d9',
-        'btn-blue': '#1fa3ff',
-        'btn-blue-hover': '#178de6',
-        'herovideo':'#105183',
+         
+        
         'color-contact':'#0f1f50',
         'gradi':'#105183',
         'page-bg3': '#0E1129',

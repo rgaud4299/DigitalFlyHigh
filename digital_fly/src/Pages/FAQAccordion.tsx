@@ -1,12 +1,10 @@
 // FAQAccordion.tsx
 import { useState } from "react";
-
-import React, { useEffect } from "react";
-import { motion as Motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Services from "../Components/Services";
+import { motion as Motion } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { defaultOptions, fadeInUpScale } from "../utils/Animations/animations";
+import { useFadeInOnView } from "../utils/Animations/useFadeInOnView";
 
 const faqData = [
   {
@@ -47,33 +45,16 @@ export default function FAQAccordion() {
   const toggle = (i: number) => {
     setOpenIndex((prev) => (prev === i ? null : i));
   };
-const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const { ref, ...motionProps } = useFadeInOnView();
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 200 ,scale: 1.3 },
-    visible: { opacity: 1, y: 0, scale: 1,transition: { duration: 1 } },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 1.3 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 1 } },
-  };
   return (
     <div ref={ref}
-  className="min-h-[60vh] flex flex-col md:flex-row bg-page-bg bg-gradient-to-b from-page-bg to-color-contact text-white px-6 sm:px-10 md:px-36 py-16 sm:py-20 gap-10 sm:gap-14">
+      className="min-h-[60vh] flex flex-col md:flex-row bg-page-bg bg-gradient-to-b from-page-bg to-color-contact text-white px-6 sm:px-10 md:px-36 py-16 sm:py-20 md:py-28 md:pt-36 gap-10 sm:gap-14">
       {/* Left Title */}
       <Motion.div
-             
-                initial="hidden"
-                animate={controls}
-                variants={textVariants} className="md:flex-2 flex flex-col justify-start md:w-1/2">
+
+        {...motionProps}
+        className="md:flex-2 flex flex-col justify-start md:w-1/2">
         <div className="mb-3 text-sm text-sky-400 font-medium tracking-wide">
           [ <span className="text-white font-medium">Everything You Need to Know</span> ]
         </div>
@@ -85,11 +66,9 @@ const controls = useAnimation();
 
       {/* Right Accordion */}
       <Motion.div
-                
-                initial="hidden"
-                animate={controls}
-                variants={textVariants} 
-                className="md:flex-1 w-full max-w-3xl md:px-5 md:ms-5">
+
+        {...motionProps}
+        className="md:flex-1 w-full max-w-3xl md:px-5 md:ms-5">
         <div className="space-y-6">
           {faqData.map((item, idx) => {
             const isOpen = openIndex === idx;

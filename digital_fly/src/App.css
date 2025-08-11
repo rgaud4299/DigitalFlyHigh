@@ -17,3 +17,15 @@
 }  
 
 
+.section-container {
+  @apply w-full bg-page-bg py-20 px-6 flex flex-col items-center;
+}
+
+
+
+
+
+
+
+
+

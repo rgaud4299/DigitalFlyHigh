@@ -1,33 +1,17 @@
 // Footer.tsx
 
-import React, { useEffect } from "react";
-import { motion as Motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion as Motion } from "framer-motion";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
-import LeadershipSection from "./LeadershipSection";
+import { useFadeInOnView } from "../utils/Animations/useFadeInOnView";
 
 const Footer = () => {
-  const controls = useAnimation();
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  
-    useEffect(() => {
-      if (inView) {
-        controls.start("visible");
-      }
-    }, [controls, inView]);
-  
-    const textVariants = {
-      hidden: { opacity: 0, y: 200 ,scale: 1.3 },
-      visible: { opacity: 1, y: 0, scale: 1,transition: { duration: 1 } },
-    };
-  
+    const { ref, ...motionText } = useFadeInOnView();  
+    
   const year = new Date().getFullYear();
   return (
     <footer className="bg-page-bg text-white bg-gradient-to-t from-page-bg to-page-bg3">
       <Motion.div ref={ref} 
-       initial="hidden"
-          animate={controls}
-          variants={textVariants}
+      { ...motionText}
       className="max-w-7xl mx-auto px-6 md:px-16 py-16 border-b border-gray-700 flex flex-col md:flex-row justify-between gap-8">
         {/* Left: Address */}
         <div className="flex-1 text-center md:text-left">
@@ -65,8 +49,7 @@ const Footer = () => {
       {/* Bottom bar */}
       <Motion.div 
        initial="hidden"
-          animate={controls}
-          variants={textVariants}
+         { ...motionText}
            className="max-w-7xl mx-auto px-6 md:px-16 py-16 flex flex-col md:flex-col justify-center items-center text-center text-sm gap-2">
         <div className="text-gray-200">
           Copyright {year} - Digital Fly-High Solutions. All Rights Reserved.

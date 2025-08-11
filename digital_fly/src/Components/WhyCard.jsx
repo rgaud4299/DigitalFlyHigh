@@ -24,45 +24,26 @@
 
 // export default WhyCard
 
-import React, { useRef } from "react";
-import { motion as Motion, useInView } from "framer-motion";
+import { motion as Motion} from "framer-motion";
+import { useFadeInOnView } from "../utils/Animations/useFadeInOnView";
+import { cardVariants } from "../utils/Animations/animations";
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50, scale: 1.3 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 1.4,
-      ease: [0.22, 1, 0.36, 1], // smooth easing
-    },
-  },
-};
 
-const WhyCard = ({ title, children, icon }) => {
-  const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true, margin: "-100px" });
+
+const WhyCard = ({ title, children, icon,index }) => {
+const { ref, ...motionCard } = useFadeInOnView(cardVariants(+index*0.3));  
 
   return (
     <Motion.div
-      ref={cardRef}
-      variants={cardVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      whileHover={{
-        scale: 1.03,
-        rotateX: 3,
-        rotateY: -3,
-        boxShadow: "0 15px 40px rgba(0, 255, 255, 0.2)",
-        transition: { duration: 0.4 },
-      }}
+      ref={ref}
+     {...motionCard}
+    
       style={{
         minHeight: "360px",
         perspective: "1000px",
         transformStyle: "preserve-3d",
       }}
-     className="relative w-full rounded-2xl p-8 shadow-md ring-1 ring-white/10 flex flex-col justify-between items-center text-center bg-card-bg2 text-slate-200 hover:text-white hover:shadow-lg hover:bg-accent"
+     className="relative w-full rounded-2xl p-8 shadow-md ring-1 ring-white/10 flex flex-col justify-between items-center text-center bg-card-bg2 text-slate-200 hover:text-white hover:shadow-lg hover:bg-card-hover"
 
     >
       <div className="flex flex-col h-full w-full">

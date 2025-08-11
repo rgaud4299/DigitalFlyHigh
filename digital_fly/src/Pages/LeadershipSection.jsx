@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import { motion as Motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Services from "../Components/Services";
+import { motion as Motion } from "framer-motion";
+import { useFadeInOnView } from "../utils/Animations/useFadeInOnView";
 
 export default function LeadershipSection({
   headingMain = 'The Minds Behind',
@@ -12,33 +10,17 @@ export default function LeadershipSection({
   imageSrc = 'https://digitalflyhigh.in/images/team/md.webp', // replace with actual path
   imageAlt = 'Rajesh Arkhel portrait',
 }) {
-    const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 200 ,scale: 1.3 },
-    visible: { opacity: 1, y: 0, scale: 1,transition: { duration: 1 } },
-  };
+ const { ref, ...motionText } = useFadeInOnView();  
   return (
     <section
       aria-label="Leadership"
-      className="bg-page-bg text-white font-sans py-20 px-6"
+      className="section-container"
     >
 
       <div ref={ref} className="max-w-7xl mx-auto px-8">
         <Motion.div   
-        initial="hidden"
-          animate={controls}
-          variants={textVariants} 
+        {...motionText} 
           className="text-center mb-12">
-          
-
           <h1 className="font-semibold text-[1.5rem] md:text-[3rem] leading-none">
             <span className="block">{headingMain}</span>
             <span className="block gradient-text">{headingAccent}</span>
@@ -63,28 +45,7 @@ export default function LeadershipSection({
           <div className="flex-1">
             <div className="flex items-start gap-6 ">
               <div className="flex-shrink-0">
-                {/* <div className="bg-accent w-16 h-16 rounded-md flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M7.17 8.5a4 4 0 015.66 0L16 11.67V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-5.33l1.17-1.17z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 10h16"
-                    />
-                  </svg>
-                </div> */}
+          
               </div>
               <div>
                 <p className="text-white text-3xl md:text-4xl font-normal leading-snug mb-4">
