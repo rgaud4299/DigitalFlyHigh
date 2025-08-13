@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
-import { motion as Motion } from "framer-motion";
-import { useInView } from "framer-motion";
+// import React, { useRef } from "react";
+import { motion as Motion, useInView } from "framer-motion";
+import { useRef } from "react";
+// import { useInView } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 
 import {

@@ -14,12 +14,15 @@ export default {
         'spin-slow': 'spin 8s linear infinite',
       },
         colors: {
-         'page-bg': '#0E1129',
+         'page-bg': '#0f1f50',
+        //  'page-bg': '#0E1129',
+
          'card-bg2':'#141a3a',
-         'herovideo':'#105183',
          'btn-color': '#00A8CC',
          'btn-color-hover': '#008FB0',
          'card-hover': '#00b0d9',
+         'herovideo':'#105183',
+
          //  'card-bg2':'red',
        
 

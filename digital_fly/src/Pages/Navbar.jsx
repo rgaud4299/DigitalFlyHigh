@@ -8,6 +8,8 @@ const navItems = [
   { name: "Why Us", to: "/why-us" },
   { name: "Services", to: "/services" },
   { name: "Pricing", to: "/pricing" },
+  // { name: "Portfolio", to: "/Portfolio"},
+  // { name: "Career", to: "/Career"},
   { name: "FAQ", to: "/faq" },
 ];
 
@@ -33,7 +35,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
+      className={`w-full fixed top-0 left-0 z-50 transition-all duration-300  ${
         isSticky ? " bg-page-bg shadow-md" :"" 
       }`}
     >
@@ -48,7 +50,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-7">
           {navItems.map((item) => (
             <NavLink
               key={item.name}

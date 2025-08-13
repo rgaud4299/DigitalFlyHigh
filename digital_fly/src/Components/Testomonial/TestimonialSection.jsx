@@ -37,13 +37,42 @@ const testimonials = [
     text:
       "Doloremque aliquam repellat illum vel, corporis inventore voluptas laborum. Dolorum asperiores magni minus quia incidunt.",
   },
+    {
+    id: 1,
+    avatar:
+      "https://images.unsplash.com/photo-1521225099409-8e1efc95321d?auto=format&fit=crop&h=153&q=80",
+    name: "Furkan Giray",
+    role: "Web Developer",
+    rating: 5,
+    text:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita velit labore suscipit distinctio, officiis deserunt rem blanditiis ducimus. Voluptate quaerat assumenda qui veniam facilis doloribus maiores impedit ducimus cum accusamus.",
+  },
+  {
+    id: 2,
+    avatar:
+      "https://images.unsplash.com/photo-1521225099409-8e1efc95321d?auto=format&fit=crop&h=153&q=80",
+    name: "Furkan Giray",
+    role: "Web Developer",
+    rating: 5,
+    text:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita velit labore suscipit distinctio, officiis deserunt rem blanditiis ducimus. Voluptate quaerat assumenda qui veniam facilis doloribus maiores impedit ducimus cum accusamus.",
+  },
+  {
+    id: 3,
+    avatar:
+      "https://images.unsplash.com/photo-1521225099409-8e1efc95321d?auto=format&fit=crop&h=153&q=80",
+    name: "Jane Doe",
+    role: "UI/UX Designer",
+    rating: 5,
+    text:
+      "Doloremque aliquam repellat illum vel, corporis inventore voluptas laborum. Dolorum asperiores magni minus quia incidunt.",
+  },
 ];
 
 export default function TestimonialSection() {
   return (
     <section
-      className="relative w-full"
-     
+      className="relative w-full bg-page-bg"
     >
 
         <div
@@ -73,14 +102,14 @@ export default function TestimonialSection() {
           loop={true}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
           breakpoints={{
-            768: { slidesPerView: 2 }, // 2 cards on tablet+
+            768: { slidesPerView: 3 }, // 2 cards on tablet+
           }}
         >
-          {testimonials.map((t) => (
-            <SwiperSlide key={t.id}>
+          {testimonials.map((t,idx) => (
+            <SwiperSlide key={idx}>
               <article
                 className="bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden mx-auto"
-                style={{ minHeight: 360, maxWidth: 500 }}
+                style={{ minHeight: 260,maxHeight: 300, maxWidth: 400 }}
               >
                 <div className="flex items-center gap-4 mb-4">
                   {/* avatar */}

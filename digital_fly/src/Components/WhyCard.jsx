@@ -31,7 +31,7 @@ import { cardVariants } from "../utils/Animations/animations";
 
 
 const WhyCard = ({ title, children, icon,index }) => {
-const { ref, ...motionCard } = useFadeInOnView(cardVariants(+index*0.3));  
+const { ref, ...motionCard } = useFadeInOnView(cardVariants(+index*0.15));  
 
   return (
     <Motion.div

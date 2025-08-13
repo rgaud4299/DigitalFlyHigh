@@ -6,9 +6,7 @@
 
 
 
- html {
-    font-family: 'Manrope', Helvetica, Arial, sans-serif;
-  }
+
 
 .gradient-text {
   background: linear-gradient(90deg, #e5e9f2 0%, #c7d0e8 100%);
@@ -21,11 +19,18 @@
   @apply w-full bg-page-bg py-20 px-6 flex flex-col items-center;
 }
 
+.navbar-container {
+  @apply w-full fixed top-0 left-0 z-50 transition-all duration-300;
+}
 
 
 
+ .bg-page-pg9 {
+    /* red → orange gradient like your design */
+    background: linear-gradient(90deg, #e92b2b 0%, #ef6b3a 50%, #ef6b3a 100%);
+  }
 
-
-
-
-
+  /* soft card highlight ring (used via class name below) */
+  .card-accent9 {
+    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.12), 0 3px 6px rgba(0,0,0,0.06);
+  }

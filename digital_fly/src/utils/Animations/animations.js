@@ -10,7 +10,7 @@ export const fadeInUpScale ={
   }
 };
 export const textVariants = {
-    hidden: { opacity: 0,x:-150, y: 150 ,scale: 1.3 },
+    hidden: { opacity: 0,x:-80, y: 80 ,scale: 1.25 },
     visible: { opacity: 1,x:0, y: 0, scale: 1,transition: {delay : 0, duration: 1 } },
   };
 
@@ -109,26 +109,9 @@ export const staggerContainer = (staggerChildren= 0.2) => ({
 
 //Default Options
 export const defaultOptions = {
-  once: false,
+  once: true,
   threshold: 0.2
 };
-
-
-
-  //  whileHover={{
-  //       scale: 1.03,
-  //       rotateX: 3,
-  //       rotateY: -3,
-  //       boxShadow: '0 15px 40px rgba(0, 255, 255, 0.2)',
-  //       transition: { duration: 0.4 },
-  //     }} 
-
-
-
-
-
-
-
 
 
 
@@ -137,7 +120,7 @@ export const defaultOptions = {
 
 
   // Parent variant with stagger
-export const staggerContainer2 = (stagger = 0.3, delayChildren = 0) => ({
+export const staggerContainer2 = (stagger = 0.1, delayChildren = 0) => ({
   hidden: {
     ...textVariants.hidden, // inherit hidden from textVariants
   },
@@ -154,7 +137,7 @@ export const staggerContainer2 = (stagger = 0.3, delayChildren = 0) => ({
 // Slide-in-left child variant
 // 
 export const slideInLeft2 = ( duration = 0.6) => ({
-  hidden: { opacity: 0,x:-160, y: 100 },
+  hidden: { opacity: 0,x:-100, y: 100 },
   visible: {
     opacity: 1,
     x:0,

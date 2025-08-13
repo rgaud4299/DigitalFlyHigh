@@ -11,7 +11,6 @@ import ContactForm from "./Pages/ContactForm";
 import OurServicesSection from "./Pages/OurServicesSection";
 import FAQAccordion from "./Pages/FAQAccordion";
 import Footer from "./Components/Footer";
-import LeadershipSection from "./Components/LeadershipSection";
 import PricingPlans from "./Pages/Pricing";
 import ProjectBasedSolutions from "./Pages/ProjectBasedSolutions";
 import WhyUs from "./Pages/WhyUs";
@@ -19,8 +18,17 @@ import Navbar from "./Pages/Navbar";
 import About from "./Pages/About";
 import HeroSection from "./Pages/HeroSection";
 import { motion as Motion , useScroll } from "framer-motion";
-import TestimonialSection from './Components/Testomonial/Testomonial';
+import TestimonialSection from './Components/Testomonial/TestimonialSection';
 import PinnedPanels from './Components/PinnedPanels/PinnedPanels';
+import OurProducts from './Components/OurProducts/OurProducts';
+import OurWorkPage from './Components/OurProducts/OurProducts';
+import Product from './Components/ServicesDetailsSection/Product';
+import TermsOfService from './Components/Term_condition/TermsOfService';
+import PrivacyPolicy from './Components/Term_condition/PrivacyPolicy';
+import ScrollToTop from './utils/ScrollToTop';
+import Portfolio from './Pages/Portfolio';
+import CareerPost from './Components/Career/JobPosts';
+import LeadershipSection from './Pages/LeadershipSection';
 
 
 
@@ -30,7 +38,10 @@ function App() {
 
   return (
     <>
-      {/* Scroll Indicator */}
+      <Navbar navigate={navigate} />
+      {/* Scroll Indicator */} 
+
+{ 
       <Motion.div
         id="scroll-indicator"
         style={{
@@ -45,9 +56,11 @@ function App() {
           backgroundColor: "#178de6",
         }}
       />
+      }
 
-      <Navbar navigate={navigate} />
-  
+      <Navbar />
+
+        <ScrollToTop />
 
       <Routes>
         <Route
@@ -65,14 +78,16 @@ function App() {
               <OurServicesSection />
               <PricingPlans />
               <ProjectBasedSolutions />
-              <LeadershipSection />
+              {/* <LeadershipSection /> */}
               <FAQAccordion />
+
                  {/* <TestimonialSection/> */}
 
               <ContactForm />
             </>
           }
-        />
+        /> 
+
         <Route path="/about" element={<About />} />
         <Route path="/why-us" element={<WhyUs />} />
         <Route path="/services" element={<OurServicesSection />} />
@@ -80,15 +95,26 @@ function App() {
         <Route path="/faq" element={<FAQAccordion />} />
         <Route path="/leadership" element={<LeadershipSection />} />
         <Route path="/contact" element={<ContactForm />} />
+        {/* <Route path="/Portfolio" element={<Portfolio/>} />
+        <Route path="/career" element={<CareerPost />} /> */}
+        <Route path="/service-details" element={<Product/>} />
+        <Route path="/TermsOfService" element={<TermsOfService/>} />
+        <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>} />
+
+
       </Routes>
 
       <Footer />   
+
       {/* <PinnedPanels/> */}
     {/* <Toaster /> */}
    <ToastContainer position="top-right" autoClose={2000} />
+
     </>
   );
 }
 
 
 export default App;
+
+

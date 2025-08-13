@@ -6,8 +6,9 @@ import {
   FaVideo,
 } from "react-icons/fa";
 
-import React, { useRef } from "react";
-import { motion as Motion, useInView } from "framer-motion";
+// import React, { useRef } from "react";
+import { motion as Motion,  } from "framer-motion";
+import { Navigate, useNavigate } from "react-router-dom";
 const services = [
   {
     icon: FaLaptopCode,
@@ -19,7 +20,7 @@ const services = [
       { name: "Standard (7 Pages + Blog)", price: "25,000" },
       { name: "Premium (10+ Pages)", price: "35,000" },
     ],
-    buttonText: "Request a Quote",
+    buttonText: "View More...",
   },
   {
     icon: FaShoppingCart,
@@ -31,7 +32,7 @@ const services = [
       { name: "Standard Store (50 Products)", price: "50,000" },
       { name: "Premium Store (100+)", price: "75,000" },
     ],
-    buttonText: "Request a Quote",
+    buttonText: "View More...",
   },
   {
     icon: FaPaintBrush,
@@ -43,11 +44,11 @@ const services = [
       { name: "Premium Branding Package", price: "15,000" },
       { name: "Social Media Creatives (10)", price: "5,000" },
     ],
-    buttonText: "Request a Quote",
+    buttonText: "View More...",
   },
   {
     icon: FaVideo,
-    title: "Video Marketing & Editing",
+    title: "Digital Marketing & Video Marketing",
     description:
       "We produce highly engaging video content, from viral short-form reels to professional videos that effectively tell your unique brand story.",
     packages: [
@@ -55,39 +56,40 @@ const services = [
       { name: "Corporate Video (3-5 Min)", price: "20,000" },
       { name: "Full Production Package", price: "35,000" },
     ],
-    buttonText: "Request a Quote",
+    buttonText: "View More...",
   },
 ];
 
 const ProjectBasedCard = () => {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
+  // const containerRef = useRef(null);
+  // const isInView = useInView(containerRef, { once: false, margin: "-100px" });
+  const navigate = useNavigate();
 
-  const parentVariants = {
-    hidden: {},
-    visible: {
-      transition: { staggerChildren: 0.2 },
-    },
-  };
+  // const parentVariants = {
+  //   hidden: {},
+  //   visible: {
+  //     transition: { staggerChildren: 0.2 },
+  //   },
+  // };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-  };
+  // const cardVariants = {
+  //   hidden: { opacity: 0, y: 100 },
+  //   visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  // };
 
   return (
     <Motion.div
-      ref={containerRef}
+      // ref={containerRef}
       className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
-      variants={parentVariants}
+      // variants={parentVariants}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      // animate={isInView ? "visible" : "hidden"}
     >
       {services.map((card, index) => (
         <Motion.div
           key={index}
           className="bg-card-bg2 rounded-xl p-8 shadow-md flex flex-col justify-between text-white"
-          variants={cardVariants}
+          // variants={cardVariants}
           whileHover={{
             scale: 1.03,
             rotateX: 3,
@@ -114,7 +116,10 @@ const ProjectBasedCard = () => {
               ))}
             </div>
           </div>
-          <button className="mt-6 bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-lg mx-auto">
+          <button
+            className="mt-6 bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-lg mx-auto"
+           onClick={() => navigate(`/service-details?ServiceId=${index}`)}
+          >
             {card.buttonText}
           </button>
         </Motion.div>
