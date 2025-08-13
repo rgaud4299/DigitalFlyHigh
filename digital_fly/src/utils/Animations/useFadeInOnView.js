@@ -21,7 +21,7 @@ export function useFadeInOnView(
     } else if (!options.once) {
       controls.start("hidden");
     }
-  }, [ controls, options.once]);
+  }, [inView, controls, options.once]);
 
   return {
     ref,
