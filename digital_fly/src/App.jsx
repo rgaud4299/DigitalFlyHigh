@@ -34,6 +34,8 @@ import Section from './Components/ServicesDetailsSection/Section';
 function App() {
   const { scrollYProgress } = useScroll();
   const navigate = useNavigate();
+  const isMobile = window.innerWidth <= 768;
+
 
   return (
     <>
@@ -107,7 +109,7 @@ function App() {
 
       {/* <PinnedPanels/> */}
     {/* <Toaster /> */}
-   <ToastContainer position="top-right" autoClose={2000} />
+   <ToastContainer  position={isMobile ? "bottom-center" : "top-right"} autoClose={2000} />
 
     </>
   );
