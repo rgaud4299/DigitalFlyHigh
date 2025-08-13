@@ -18,10 +18,7 @@ import Navbar from "./Pages/Navbar";
 import About from "./Pages/About";
 import HeroSection from "./Pages/HeroSection";
 import { motion as Motion , useScroll } from "framer-motion";
-import TestimonialSection from './Components/Testomonial/TestimonialSection';
-import PinnedPanels from './Components/PinnedPanels/PinnedPanels';
-import OurProducts from './Components/OurProducts/OurProducts';
-import OurWorkPage from './Components/OurProducts/OurProducts';
+
 import Product from './Components/ServicesDetailsSection/Product';
 import TermsOfService from './Components/Term_condition/TermsOfService';
 import PrivacyPolicy from './Components/Term_condition/PrivacyPolicy';
@@ -29,8 +26,8 @@ import ScrollToTop from './utils/ScrollToTop';
 import Portfolio from './Pages/Portfolio';
 import CareerPost from './Components/Career/JobPosts';
 import LeadershipSection from './Pages/LeadershipSection';
-import Services from './Components/Services';
-import Sections from './Components/ServicesDetailsSection/sections';
+import Section from './Components/ServicesDetailsSection/Section';
+// import Sections from './Components/ServicesDetailsSection/Section';
 
 
 
@@ -99,7 +96,7 @@ function App() {
         <Route path="/contact" element={<ContactForm />} />
         {/* <Route path="/Portfolio" element={<Portfolio/>} />
         <Route path="/career" element={<CareerPost />} /> */}
-        <Route path="/service-details" element={<Sections/>} />
+        <Route path="/service-details" element={<Section/>} />
         <Route path="/TermsOfService" element={<TermsOfService/>} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>} />
 

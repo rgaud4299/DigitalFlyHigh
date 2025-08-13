@@ -52,7 +52,7 @@ const sections = [
   },
 ];
 
-const Sections = () => {
+const Section = () => {
 
     const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -72,4 +72,4 @@ const Sections = () => {
   );
 };
 
-export default Sections;
+export default Section;
