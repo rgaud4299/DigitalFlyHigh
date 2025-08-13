@@ -29,6 +29,8 @@ import ScrollToTop from './utils/ScrollToTop';
 import Portfolio from './Pages/Portfolio';
 import CareerPost from './Components/Career/JobPosts';
 import LeadershipSection from './Pages/LeadershipSection';
+import Services from './Components/Services';
+import Sections from './Components/ServicesDetailsSection/sections';
 
 
 
@@ -97,7 +99,7 @@ function App() {
         <Route path="/contact" element={<ContactForm />} />
         {/* <Route path="/Portfolio" element={<Portfolio/>} />
         <Route path="/career" element={<CareerPost />} /> */}
-        <Route path="/service-details" element={<Product/>} />
+        <Route path="/service-details" element={<Sections/>} />
         <Route path="/TermsOfService" element={<TermsOfService/>} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>} />
 
